@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chizirim Victory Nwoko — Remote Virtual Assistant & Customer Support Specialist</title>
+  <meta name="description" content="Portfolio of Chizirim Victory Nwoko — Remote Virtual Assistant, Administrative Support, Customer Support, Data Entry, Email & Chat Support Specialist, and Appointment Setter.">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-14px)' },
+            },
+            floatDelayed: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(14px)' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(12px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          },
+          animation: {
+            'float': 'float 7s ease-in-out infinite',
+            'float-delayed': 'floatDelayed 9s ease-in-out infinite',
+            'fade-in-up': 'fadeInUp 0.4s ease-out forwards',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300 antialiased selection:bg-emerald-500/20 selection:text-emerald-700 relative overflow-x-hidden min-h-screen flex flex-col">
+
+  <!-- Ambient Floating Orbs -->
+  <div class="fixed top-[-6%] left-[-4%] w-[420px] h-[420px] bg-emerald-200/45 dark:bg-emerald-900/15 rounded-full blur-3xl pointer-events-none z-0"></div>
+  <div class="fixed bottom-[8%] right-[-4%] w-[460px] h-[460px] bg-teal-200/40 dark:bg-teal-900/15 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+  <!-- Sticky Navigation Header -->
+  <header class="sticky top-0 z-40 w-full glass-panel border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-4">
+      <!-- Brand / Name -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white font-bold flex items-center justify-center text-sm shadow-sm group-hover:scale-105 transition-transform">
+          CVN
+        </div>
+        <div>
+          <span class="font-bold text-slate-900 dark:text-white tracking-tight text-sm sm:text-base block leading-tight group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+            Chizirim Victory Nwoko
+          </span>
+          <span class="text-[11px] text-emerald-600 dark:text-emerald-400 font-medium block">
+            Virtual Assistant & Customer Support Specialist
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-7 text-xs font-medium text-slate-600 dark:text-slate-400">
+        <a href="#competencies" class="hover:text-slate-900 dark:hover:text-white transition-colors">Core Services</a>
+        <a href="#experience-hub" class="hover:text-slate-900 dark:hover:text-white transition-colors">Work History</a>
+        <a href="#experience-hub" onclick="switchTab('education')" class="hover:text-slate-900 dark:hover:text-white transition-colors">Education</a>
+        <a href="#experience-hub" onclick="switchTab('skills')" class="hover:text-slate-900 dark:hover:text-white transition-colors">Skills & Tools</a>
+        <a href="#contact-section" class="hover:text-slate-900 dark:hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button onclick="copySummaryCV()" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs font-medium text-slate-700 dark:text-slate-300 hover:border-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400 transition-all" title="Copy formatted resume summary">
+          <i data-lucide="file-text" class="w-3.5 h-3.5 text-emerald-600"></i>
+          <span>Copy CV</span>
+        </button>
+
+        <button onclick="toggleDarkMode()" aria-label="Toggle Light or Dark Theme" class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+          <i data-lucide="moon" id="theme-icon" class="w-4 h-4"></i>
+        </button>
+
+        <button onclick="openHireModal('General Executive & Virtual Assistance')" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-lg text-xs font-semibold transition-all shadow-sm shadow-emerald-600/20 flex items-center gap-1.5 hover:-translate-y-0.5">
+          <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+          <span>Hire Me</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 sm:pt-14 pb-24 space-y-16 flex-grow relative z-10">
+
+    <!-- HERO SECTION -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <div class="lg:col-span-8 space-y-5">
+        <!-- Availability Pill -->
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200/80 dark:border-emerald-800/70 shadow-sm">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>Open to Remote Opportunities Worldwide • Available Across All Time Zones</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+          Remote Virtual Assistant &amp; <span class="text-emerald-600 dark:text-emerald-400">Customer Support</span> Specialist
+        </h1>
+
+        <p class="text-sm font-medium text-slate-500 dark:text-slate-400">
+          Administrative Support &bull; Customer Support &bull; Data Entry &bull; Email &amp; Chat Support Specialist &bull; Appointment Setter
+        </p>
+
+        <p class="text-base text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          Results-driven and adaptable Customer Support, Virtual Assistance, and Administrative Professional with over four years of experience supporting customers, executives, healthcare operations, sales activities, and day-to-day business functions. Known for being dependable, organized, detail-oriented, and learning new digital systems quickly.
+        </p>
+
+        <!-- Key Metrics Row -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 transition-transform">
+            <div class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">4+ Years</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Operations &amp; Support</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 transition-transform">
+            <div class="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400">+15%</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Upselling Conversions</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 transition-transform">
+            <div class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">B.Sc.</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Actuarial Science</div>
+          </div>
+          <div class="p-3.5 rounded-xl bg-white dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 transition-transform">
+            <div class="text-xl sm:text-2xl font-bold text-emerald-600 dark:text-emerald-400">24/7</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Global Time Zone Fit</div>
+          </div>
+        </div>
+
+        <!-- Primary Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <button onclick="openHireModal('Remote Virtual Assistant / Support Role')" class="bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 dark:text-slate-950 text-white font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all shadow-sm flex items-center gap-2 hover:-translate-y-0.5">
+            <i data-lucide="calendar-check" class="w-4 h-4 text-emerald-400 dark:text-emerald-600"></i>
+            <span>Hire Me / Schedule Call</span>
+          </button>
+
+          <a href="#contact-section" class="bg-white hover:bg-slate-100 dark:bg-slate-900 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-800 font-semibold text-xs sm:text-sm px-5 py-3 rounded-xl transition-all flex items-center gap-2">
+            <i data-lucide="send" class="w-4 h-4 text-emerald-600"></i>
+            <span>Send Direct Message</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Direct Contact & Quick Snapshot Card -->
+      <div class="lg:col-span-4">
+        <div class="glass-panel rounded-2xl p-6 shadow-md border border-slate-200/90 dark:border-slate-800 space-y-5">
+          <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+            <div>
+              <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <i data-lucide="user-check" class="w-4 h-4 text-emerald-600"></i>
+                <span>Direct Contact</span>
+              </h2>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Immediate remote onboarding</p>
+            </div>
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-50 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/60">
+              Active
+            </span>
+          </div>
+
+          <div class="space-y-2.5">
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50/90 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800">
+              <div class="flex items-center gap-2.5 overflow-hidden">
+                <i data-lucide="mail" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                <span class="text-xs font-medium truncate text-slate-800 dark:text-slate-200">v.victoryn2025@gmail.com</span>
+              </div>
+              <button onclick="copyText('v.victoryn2025@gmail.com', 'Email address copied!')" class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline font-semibold shrink-0 ml-2">
+                Copy
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-xl bg-slate-50/90 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800">
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="phone" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                <span class="text-xs font-medium text-slate-800 dark:text-slate-200">+234 812 016 2621</span>
+              </div>
+              <button onclick="copyText('+2348120162621', 'Phone number copied!')" class="text-xs text-emerald-600 dark:text-emerald-400 hover:underline font-semibold shrink-0 ml-2">
+                Copy
+              </button>
+            </div>
+          </div>
+
+          <div class="pt-1 space-y-2">
+            <div class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Core Strengths</div>
+            <div class="flex flex-wrap gap-1.5 text-[11px]">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Written &amp; Verbal Comm.</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Multitasking</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Attention to Detail</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Problem-Solving</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium">Independent Remote Work</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE COMPETENCIES & SERVICES (NO PRICING) -->
+    <section id="competencies" class="reveal-section border-t border-slate-200/80 dark:border-slate-800/80 pt-12 space-y-6">
+      <div class="space-y-1.5">
+        <div class="text-xs uppercase tracking-wider font-semibold text-emerald-600 dark:text-emerald-400">Capabilities</div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Core Competencies &amp; Support Areas</h2>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-2xl">
+          Dedicated operational, administrative, and customer-facing support built for remote teams, healthcare organizations, and busy executives.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 hover:border-emerald-500/40 transition-all space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <i data-lucide="calendar-clock" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">Calendar &amp; Appointment Management</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Executive schedule coordination, reminders, conflict-free appointment setting via Google Calendar and Calendly, and multi-timezone meeting logistics.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 hover:border-emerald-500/40 transition-all space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <i data-lucide="headset" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">Omnichannel Customer &amp; Patient Support</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            High-volume email, live chat, and phone support, urgent case escalation, patient intake coordination, and case documentation via Zendesk, Freshdesk &amp; HubSpot.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 hover:border-emerald-500/40 transition-all space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <i data-lucide="folder-kanban" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">Executive &amp; Project Coordination</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Preparing meeting minutes and action trackers using Otter.ai and Google Docs, and managing team workflows inside Asana, Trello, Monday.com, and Notion.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 hover:border-emerald-500/40 transition-all space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <i data-lucide="database" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">Data Entry &amp; Digital Records</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Confidential client records management, structured cloud folders in Google Drive and Dropbox, accurate spreadsheet reporting, and online research.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 hover:border-emerald-500/40 transition-all space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">Order, Inventory &amp; Sales Support</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Monitoring stock levels, purchase requests, order fulfillment, refunds, QuickBooks tracking, and consultative customer product recommendations.
+          </p>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:-translate-y-1 hover:border-emerald-500/40 transition-all space-y-2.5">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+            <i data-lucide="inbox" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-sm font-bold text-slate-900 dark:text-white">Inbox &amp; Follow-Up Management</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Triaging executive inboxes (Gmail &amp; Outlook), drafting professional correspondence, tracking outstanding requests, and ensuring zero missed follow-ups.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE EXPERIENCE, EDUCATION & SKILLS HUB -->
+    <section id="experience-hub" class="reveal-section border-t border-slate-200/80 dark:border-slate-800/80 pt-12 space-y-6">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div class="space-y-1">
+          <div class="text-xs uppercase tracking-wider font-semibold text-emerald-600 dark:text-emerald-400">Professional Background</div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-tight">Work History, Education &amp; Skills</h2>
+        </div>
+
+        <!-- Tab Switcher Controls -->
+        <div class="inline-flex p-1 rounded-xl bg-slate-200/75 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-semibold self-start md:self-auto">
+          <button onclick="switchTab('work')" id="tab-btn-work" class="px-4 py-2 rounded-lg transition-all bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-sm flex items-center gap-1.5">
+            <i data-lucide="briefcase" class="w-3.5 h-3.5 text-emerald-600"></i>
+            <span>Work History</span>
+          </button>
+          <button onclick="switchTab('education')" id="tab-btn-education" class="px-4 py-2 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5">
+            <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+            <span>Education &amp; Certs</span>
+          </button>
+          <button onclick="switchTab('skills')" id="tab-btn-skills" class="px-4 py-2 rounded-lg transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center gap-1.5">
+            <i data-lucide="wrench" class="w-3.5 h-3.5"></i>
+            <span>Skills &amp; Tools</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB 1: WORK HISTORY (All 4 Roles from CV) -->
+      <div id="tab-content-work" class="space-y-4 animate-fade-in-up">
+        <!-- Role 1: MobiHealth International -->
+        <div class="glass-panel rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:border-emerald-500/40 transition-all space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Customer Support Officer</h3>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400">MobiHealth International</p>
+            </div>
+            <span class="text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium w-max">
+              January 2026 – July 2026
+            </span>
+          </div>
+          <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 list-disc pl-5 leading-relaxed">
+            <li>Managed high-volume patient and customer inquiries through phone, email, chat, and support platforms, providing accurate information and timely assistance.</li>
+            <li>Assisted customers with appointments, healthcare services, account-related concerns, digital platforms, and service processes.</li>
+            <li>Escalated urgent or complex cases to appropriate departments, monitored progress, and communicated updates to affected customers.</li>
+            <li>Maintained accurate customer records, support logs, follow-up actions, and case documentation while protecting confidential customer information.</li>
+          </ul>
+          <div class="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/50 text-xs text-emerald-900 dark:text-emerald-200">
+            <strong>Key Achievement:</strong> Supported efficient resolution and follow-up of customer and patient concerns by maintaining accurate case documentation and ensuring smooth communication between departments.
+          </div>
+        </div>
+
+        <!-- Role 2: Dressbychristy -->
+        <div class="glass-panel rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:border-emerald-500/40 transition-all space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Executive Assistant</h3>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400">Dressbychristy</p>
+            </div>
+            <span class="text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium w-max">
+              May 2023 – October 2025
+            </span>
+          </div>
+          <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 list-disc pl-5 leading-relaxed">
+            <li>Managed the executive's calendar, appointments, reminders, and scheduling changes using Google Calendar and Calendly, minimizing scheduling conflicts.</li>
+            <li>Organized confidential digital records and documents using Google Drive, Dropbox, and shared folders, maintaining structured access and easy retrieval.</li>
+            <li>Prepared meeting notes, action trackers, task updates, and follow-up documentation using Otter.ai, Google Docs, Asana, and Trello.</li>
+            <li>Monitored inventory records, stock movements, purchase requests, internal communication, and operational updates using Microsoft Excel, Google Sheets, and QuickBooks.</li>
+          </ul>
+          <div class="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/50 text-xs text-emerald-900 dark:text-emerald-200">
+            <strong>Key Achievement:</strong> Improved executive workflow coordination by maintaining organized calendars, meeting records, task trackers, and follow-up activities across multiple priorities.
+          </div>
+        </div>
+
+        <!-- Role 3: Kbee Naturals -->
+        <div class="glass-panel rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:border-emerald-500/40 transition-all space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Assistant Manager</h3>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400">Kbee Naturals</p>
+            </div>
+            <span class="text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium w-max">
+              March 2021 – December 2022
+            </span>
+          </div>
+          <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 list-disc pl-5 leading-relaxed">
+            <li>Coordinated daily appointment schedules, customer bookings, and staff availability to support smooth service delivery and efficient customer flow.</li>
+            <li>Maintained accurate service and inventory records using spreadsheets, monitoring stock levels and purchase requirements to support business operations.</li>
+            <li>Managed high-volume customer requests, including orders, refunds, service enquiries, and follow-up activities while maintaining accurate customer information.</li>
+          </ul>
+          <div class="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/50 text-xs text-emerald-900 dark:text-emerald-200">
+            <strong>Key Achievement:</strong> Contributed to a 15% increase in upselling conversions by recommending suitable products based on customer needs and purchase history.
+          </div>
+        </div>
+
+        <!-- Role 4: Zealox Hotels & Suites -->
+        <div class="glass-panel rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:border-emerald-500/40 transition-all space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Customer / Sales Service Representative</h3>
+              <p class="text-xs sm:text-sm font-semibold text-emerald-600 dark:text-emerald-400">Zealox Hotels &amp; Suites</p>
+            </div>
+            <span class="text-xs px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-medium w-max">
+              February 2014 – December 2017
+            </span>
+          </div>
+          <ul class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 space-y-1.5 list-disc pl-5 leading-relaxed">
+            <li>Managed high-volume guest inquiries, reservations, check-ins, check-outs, service requests, and general customer support activities.</li>
+            <li>Maintained accurate guest records, booking information, service requests, complaints, and daily operational logs using hotel management systems.</li>
+            <li>Responded to customer concerns through in-person, telephone, and digital communication channels, gathering relevant information and coordinating resolutions.</li>
+          </ul>
+          <div class="p-3 rounded-xl bg-emerald-50/70 dark:bg-emerald-950/40 border border-emerald-200/70 dark:border-emerald-800/50 text-xs text-emerald-900 dark:text-emerald-200">
+            <strong>Key Achievement:</strong> Supported improved guest satisfaction by providing responsive customer service, personalized recommendations, and effective follow-up on service requests.
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: EDUCATION & CERTIFICATIONS -->
+      <div id="tab-content-education" class="hidden space-y-5 animate-fade-in-up">
+        <!-- Degree -->
+        <div class="glass-panel rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-emerald-100 dark:bg-emerald-950 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0">
+              <i data-lucide="graduation-cap" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <div class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">University Degree &bull; 2017</div>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white">Bachelor of Science (B.Sc.) Actuarial Science</h3>
+              <p class="text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-300">University of Lagos</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400 pt-1 leading-relaxed">
+                Quantitative analytical background equipping strong attention to accuracy, spreadsheet modeling, risk assessment, and structured operational reporting.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certifications -->
+        <div class="glass-panel rounded-2xl p-6 border border-slate-200/90 dark:border-slate-800 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+            <i data-lucide="award" class="w-5 h-5 text-emerald-600"></i>
+            <span>Professional Certifications &amp; Training</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">Diploma in Project Management</div>
+              <div class="text-slate-500 dark:text-slate-400">Digital Exchange Academy &bull; <span class="text-emerald-600 dark:text-emerald-400 font-medium">In View</span></div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">Diploma in Project Management (Working with Customers &amp; Teams)</div>
+              <div class="text-slate-500 dark:text-slate-400">Alison &bull; <span class="text-emerald-600 dark:text-emerald-400 font-medium">In View</span></div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">AI Operations and Customer Experience</div>
+              <div class="text-slate-500 dark:text-slate-400">HUGO Academy Upskill Program</div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">Copywriting Elements, Creative Strategies, Sales Psychology</div>
+              <div class="text-slate-500 dark:text-slate-400">The Copywriter's Warehouse</div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800 sm:col-span-2 space-y-1">
+              <div class="font-bold text-slate-900 dark:text-white">Remote IT Skills and Support Training</div>
+              <div class="text-slate-500 dark:text-slate-400">Digital Witch Academy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: SKILLS & SOFTWARE TOOLS MATRIX -->
+      <div id="tab-content-skills" class="hidden space-y-5 animate-fade-in-up">
+        <!-- Live Filter Bar -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <p class="text-xs text-slate-500 dark:text-slate-400">Complete software, CRM, administrative, and remote productivity toolkit:</p>
+          <div class="relative w-full sm:w-64">
+            <i data-lucide="search" class="w-3.5 h-3.5 text-slate-400 absolute left-3 top-2.5"></i>
+            <input type="text" id="skillSearchInput" oninput="filterSkills()" placeholder="Search tools (e.g. Zendesk, Asana)..." class="w-full pl-8 pr-3 py-1.5 text-xs rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none focus:border-emerald-500">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="skillsGrid">
+          <!-- Category 1 -->
+          <div class="skill-group glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 space-y-3">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+              <i data-lucide="laptop" class="w-4 h-4"></i>
+              <span>Virtual Assistance &amp; Productivity</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 text-xs">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Google Workspace</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Microsoft Office</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Google Drive</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Google Docs</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Dropbox</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Email Management</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Digital Documentation</span>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div class="skill-group glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 space-y-3">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+              <span>Customer Support &amp; Communication Tools</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 text-xs">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Zendesk</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Freshdesk</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">HubSpot CRM</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Slack</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Microsoft Teams</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Zoom &amp; Google Meet</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Gmail &amp; Outlook</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">WhatsApp Business</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Loom &amp; Google Chat</span>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div class="skill-group glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 space-y-3">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+              <i data-lucide="kanban" class="w-4 h-4"></i>
+              <span>Scheduling, Task &amp; Project Management</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 text-xs">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Google Calendar</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Calendly</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Asana</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Trello</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Monday.com</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Notion</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">ClickUp</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Microsoft Planner</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Airtable</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Otter.ai</span>
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div class="skill-group glass-panel rounded-2xl p-5 border border-slate-200/90 dark:border-slate-800 space-y-3">
+            <div class="text-xs font-bold text-emerald-600 dark:text-emerald-400 flex items-center gap-2">
+              <i data-lucide="file-spreadsheet" class="w-4 h-4"></i>
+              <span>Data Entry, Records &amp; Finance</span>
+            </div>
+            <div class="flex flex-wrap gap-1.5 text-xs">
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Microsoft Excel</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Google Sheets</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Microsoft Word</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">QuickBooks</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">CRM Records Management</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Order &amp; Inventory Tracking</span>
+              <span class="px-2.5 py-1 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-medium">Online Research</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKING CONTACT FORM SECTION -->
+    <section id="contact-section" class="reveal-section border-t border-slate-200/80 dark:border-slate-800/80 pt-12">
+      <div class="glass-panel rounded-2xl p-6 sm:p-10 border border-slate-200/90 dark:border-slate-800 shadow-lg">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left Info Column -->
+          <div class="lg:col-span-5 space-y-4">
+            <div class="text-xs uppercase tracking-wider font-semibold text-emerald-600 dark:text-emerald-400">Get In Touch</div>
+            <h2 class="text-2xl font-bold text-slate-900 dark:text-white tracking-tight">Send a Direct Message</h2>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              Looking for a dependable Remote Virtual Assistant, Executive Assistant, or Customer Support Specialist? Send your message here and it will be delivered directly to Chizirim's inbox.
+            </p>
+
+            <div class="space-y-2.5 pt-2 text-xs">
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800">
+                <i data-lucide="mail" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                <span class="font-medium text-slate-800 dark:text-slate-200">v.victoryn2025@gmail.com</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800">
+                <i data-lucide="phone" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                <span class="font-medium text-slate-800 dark:text-slate-200">+234 812 016 2621</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200/70 dark:border-slate-800">
+                <i data-lucide="globe" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                <span class="font-medium text-slate-800 dark:text-slate-200">Remote Worldwide &bull; All Time Zones</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form Column -->
+          <div class="lg:col-span-7">
+            <form id="contact-form" onsubmit="submitFormInquiry(event, 'contact')" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contact-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Your Name</label>
+                  <input type="text" id="contact-name" name="name" required placeholder="David Miller" class="w-full px-3.5 py-2.5 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+                <div>
+                  <label for="contact-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Email Address</label>
+                  <input type="email" id="contact-email" name="email" required placeholder="david@company.com" class="w-full px-3.5 py-2.5 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+              </div>
+
+              <div>
+                <label for="contact-subject" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Subject / Role Type</label>
+                <input type="text" id="contact-subject" name="subject" required placeholder="Remote Executive Assistant / Customer Support Inquiry" class="w-full px-3.5 py-2.5 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+              </div>
+
+              <div>
+                <label for="contact-message" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">Message</label>
+                <textarea id="contact-message" name="message" rows="4" required placeholder="Share details about your team, timezone, or assistance needed..." class="w-full px-3.5 py-2.5 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+              </div>
+
+              <button type="submit" id="contact-submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-3 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Send Message to Chizirim</span>
+              </button>
+
+              <!-- Confirmation Banner -->
+              <div id="contact-confirmation" class="hidden p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-800 text-xs text-emerald-900 dark:text-emerald-200 space-y-2">
+                <div class="font-bold flex items-center gap-1.5">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+                  <span>Inquiry Sent Successfully!</span>
+                </div>
+                <p id="contact-confirmation-text">Your message has been delivered to v.victoryn2025@gmail.com.</p>
+                <a id="contact-mailto-backup" href="#" class="inline-flex items-center gap-1 text-emerald-700 dark:text-emerald-300 underline font-semibold">
+                  <span>Open in Email App as Backup</span>
+                  <i data-lucide="external-link" class="w-3 h-3"></i>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Quick-Action Hire Me Button -->
+  <div class="fixed bottom-5 right-5 z-40">
+    <button onclick="openHireModal('Discovery Call / Hiring Inquiry')" class="flex items-center gap-2.5 px-4 py-3 rounded-full bg-slate-900 dark:bg-emerald-600 text-white text-xs font-semibold shadow-xl hover:scale-105 active:scale-95 transition-all">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500 dark:bg-white"></span>
+      </span>
+      <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
+      <span>Hire Me</span>
+    </button>
+  </div>
+
+  <!-- HIRE ME / DISCOVERY MODAL -->
+  <div id="hire-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="glass-panel w-full max-w-md rounded-2xl p-6 border border-slate-200 dark:border-slate-800 shadow-2xl relative animate-fade-in-up">
+      <button onclick="closeHireModal()" aria-label="Close modal" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="space-y-1 mb-4">
+        <div class="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600 dark:text-emerald-400">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>Direct Hiring &amp; Discovery</span>
+        </div>
+        <h3 class="text-lg font-bold text-slate-900 dark:text-white">Hire Chizirim Victory Nwoko</h3>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Submit your role or support request directly to her email.</p>
+      </div>
+
+      <form id="hire-form" onsubmit="submitFormInquiry(event, 'hire')" class="space-y-3">
+        <div>
+          <label for="hire-role" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Role / Support Needed</label>
+          <select id="hire-role" name="role" class="w-full px-3 py-2 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+            <option value="Remote Virtual Assistant">Remote Virtual Assistant</option>
+            <option value="Executive Assistant">Executive Assistant</option>
+            <option value="Customer Support Specialist">Customer Support Specialist</option>
+            <option value="Administrative & Data Entry Support">Administrative &amp; Data Entry Support</option>
+            <option value="Appointment Setter / Operations">Appointment Setter / Operations</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="hire-name" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Your Name / Company</label>
+          <input type="text" id="hire-name" name="name" required placeholder="Jane Smith — Acme Corp" class="w-full px-3 py-2 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div>
+          <label for="hire-email" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Work Email</label>
+          <input type="email" id="hire-email" name="email" required placeholder="jane@company.com" class="w-full px-3 py-2 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+        </div>
+
+        <div>
+          <label for="hire-notes" class="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Schedule / Details</label>
+          <textarea id="hire-notes" name="notes" rows="3" required placeholder="Preferred time zone, hours, or key responsibilities..." class="w-full px-3 py-2 rounded-xl text-xs bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+        </div>
+
+        <button type="submit" id="hire-submit-btn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs py-2.5 rounded-xl transition-all shadow-sm flex items-center justify-center gap-2">
+          <i data-lucide="check-circle" class="w-4 h-4"></i>
+          <span>Submit Hiring Request</span>
+        </button>
+
+        <div id="hire-confirmation" class="hidden p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/70 border border-emerald-200 dark:border-emerald-800 text-xs text-emerald-900 dark:text-emerald-200 space-y-1.5">
+          <div class="font-bold"><span>Request Sent to Chizirim!</span></div>
+          <p id="hire-confirmation-text">Delivered to Chizirim.</p>
+          <a id="hire-mailto-backup" href="#" class="inline-block underline font-semibold text-emerald-700 dark:text-emerald-300">Open in Email Client</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-5 left-5 z-50 space-y-2 pointer-events-none"></div>
+
+  <!-- Footer -->
+  <footer class="border-t border-slate-200/80 dark:border-slate-800/80 py-6 text-xs text-slate-500 dark:text-slate-400 bg-white/80 dark:bg-slate-950/80 relative z-10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <div>&copy; <span id="footer-year">2026</span> Chizirim Victory Nwoko. All rights reserved.</div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:v.victoryn2025@gmail.com" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">v.victoryn2025@gmail.com</a>
+        <span>&bull;</span>
+        <a href="tel:+2348120162621" class="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">+234 812 016 2621</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lucide Icons (pinned, loaded last so it cannot block the page) -->
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+
+  <!-- Interactive Logic -->
+  <script src="script.js"></script>
+</body>
+</html>
